@@ -1,68 +1,51 @@
+// capturas da DOM
+const spanVitoria = document.getElementById("spanVitoria")
+const resultado = document.getElementById("resultado")
+const escolhaDoComputador = document.getElementById("escolhaComputador")
+const spanJogada = document.getElementById("spanJogada")
+const buttonJogar = document.getElementById("jogar")
+
+//funcoes
 const randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const escolhaComputador = () => randomNumber(0, 2)
+const resultadoAmigavel = (jogadaComputador) => {
+    let jogadas = ["pedra", "papel", "tesoura"]
+    return jogadas[jogadaComputador]
+}
 
-let resultadoAmigavel = (jogadaComputador) =>{
-    if (jogadaComputador === 0) {
-        return "pedra"
+const jogo = (escolhaJogador, jogadaComputador) => {
+    let placar = (`${escolhaJogador}${jogadaComputador}`)
+    
+    const condicoesVitoria = [ //[jogadorVence], [computadorVence]
+        ["02", "10", "21"],
+        ["20", "01", "12"]
+        
+    ]
+
+    if (condicoesVitoria[0].includes(placar)) {
+        return "Você Ganhou!!!"
     }
-    if (jogadaComputador === 1) {
-        return "papel"
+    if (condicoesVitoria[1].includes(placar)) {
+        return "O Computador Ganhou!!!"
     }
-    if (jogadaComputador === 2) {
-        return "tesoura"
-    }
+    return "Empate!!!"
 }
 
 const jogar = () => {
-    let escolhaJogador = document.getElementById("escolhaJogador").value
-    let jogadaComputador = escolhaComputador()
 
-    const escolhaDoComputador = document.getElementById("escolhaComputador")
-    const spanJogada = document.createElement("span")
+    const escolhaJogador = document.getElementById("escolhaJogador").value
+    const jogadaComputador = randomNumber(0, 2)
+
+    spanJogada.innerHTML = "Aqui vai a escolha do Computador"
     spanJogada.innerHTML = resultadoAmigavel(jogadaComputador)
     escolhaDoComputador.appendChild(spanJogada)
+    spanJogada.classList.add("spanJogada")
 
-    const resultado = document.getElementById("resultado")
-    let spanVitoria = document.createElement("span")
+    spanVitoria.innerHTML = ""
     spanVitoria.innerHTML = jogo(Number(escolhaJogador), jogadaComputador)
     resultado.appendChild(spanVitoria)
 }
 
-const buttonJogar = document.getElementById("jogar")
 buttonJogar.addEventListener("click", jogar)
-
-const jogo = (escolhaJogador, jogadaComputador) => {
-    if (escolhaJogador === 0) { //pedra
-        if (jogadaComputador === 1) {
-            return "Computador venceu"
-        }
-        if (jogadaComputador === 2) {
-            return "Você ganhou"
-        }
-        return "Empate"
-    }
-
-    if (escolhaJogador === 1) { //papel
-        if (jogadaComputador === 2) {
-            return "Computador venceu"
-        }
-        if (jogadaComputador === 0) {
-            return "Você ganhou"
-        }
-        return "Empate"
-    }
-
-    if (escolhaJogador === 2) { //tesoura
-        if (jogadaComputador === 0) {
-            return "Computador venceu"
-        }
-        if (jogadaComputador === 1) {
-            return "Você ganhou"
-        }
-        return "Empate"
-    }
-}
-
