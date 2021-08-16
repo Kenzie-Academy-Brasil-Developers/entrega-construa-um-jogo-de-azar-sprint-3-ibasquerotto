@@ -1,0 +1,79 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: floralwhite;
+    color: rgb(29, 26, 26);
+}
+h2{
+    font-size: 1.4em;
+}
+figure{
+    display:flex;
+    justify-content: center;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 90vw;
+    opacity: 0.8;
+}
+
+#jogada{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#escolhaJogador{
+    font-size: 1.1em;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+#escolhaJogador option{
+    background-color: #f9f9f9;
+}
+
+#jogar{
+    width: 100px;
+    border-radius: 32px;
+    background-color:orangered;
+    color: white;
+    font-size: 1.2em;
+}
+#jogar:hover{
+    transform: 110%;
+}
+
+#escolhaComputador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.spanJogada{
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 5px 15px;
+    text-align: center;
+    background-color: white;
+}
+#resultado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#spanVitoria{
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+}
